@@ -10,7 +10,7 @@ async function getWeather(city) {
 
     const response = await fetch(url);
     const data = await response.json();
-
+    console.log(data);
 
     if (data.error) {
         document.querySelector(".error").style.display = "block";
@@ -37,8 +37,9 @@ async function getWeather(city) {
     else if (condition.includes("snow")) weatherIcon.src = "images/snow.png";
     else if (condition.includes("fog"))  weatherIcon.src = "images/fog.png";
     else if (condition.includes("mist")) weatherIcon.src = "images/mist.png";
+    else if (condition.includes("overcast")) weatherIcon.src = "images/overcast.png";
     else if (condition.includes("thunder")) weatherIcon.src = "images/thunder.png";
-    else weatherIcon.src = "images/default.png";
+    else weatherIcon.src = "images/clear.png";
 
     document.querySelector(".city").innerHTML = data.location.name;
     document.querySelector(".temp").innerHTML = Math.round(data.current.temp_c) + "°C";
